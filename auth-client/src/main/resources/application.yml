@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+#          github:
+#            clientId: Iv1.5d7fe4c2444db547
+#            clientSecret: 825c0913a0b3ac033976fc9814f56f47676d5e62
+          client-server-oidc:
+            provider: spring
+            client-id: client-server
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://client-host:8080/login/oauth2/code/{registrationId}"
+            client-name: client-server-oidc
+            scope: openid, profile
+        provider:
+            spring:
+                issuer-uri: http://auth-server:9000
